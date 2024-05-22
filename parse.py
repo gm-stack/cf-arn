@@ -174,6 +174,26 @@ ref_category_labels = {
     'no_ref': None
 }
 
+f.write('# The big table of "How do I get an ARN?"\n')
+
+f.write("| | " + " | ".join([f"{a}" for a in arn_attr_category_names.values()]) + " |\n")
+f.write("| - | " + " | ".join([f" - " for a in arn_attr_category_names.values()]) + " |\n")
+
+for ref_category, ref_category_name in ref_category_names.items():
+    f.write(f"| {ref_category_name} |")
+
+    for arn_attr_category, arn_attr_category_name in arn_attr_category_names.items():
+        item_list = resource_categories_ref[ref_category][arn_attr_category]
+        num = len(item_list)
+        link_name = f"#{ref_category_name} and {arn_attr_category_name} - {len(item_list)} resources".replace(" ","-").replace("!","").replace("`","").replace("<","").replace(">","").replace(".","").lower()
+        f.write(f" [{num}]({link_name}) | ")
+
+
+    f.write("\n")
+
+f.write("\n---\n")
+
+
 for ref_category, ref_category_name in ref_category_names.items():
     for arn_attr_category, arn_attr_category_name in arn_attr_category_names.items():
         item_list = resource_categories_ref[ref_category][arn_attr_category]

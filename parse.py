@@ -180,7 +180,7 @@ f.write("| | " + " | ".join([f"{a}" for a in arn_attr_category_names.values()]) 
 f.write("| - | " + " | ".join([f" - " for a in arn_attr_category_names.values()]) + " |\n")
 
 for ref_category, ref_category_name in ref_category_names.items():
-    f.write(f"| {ref_category_name} |")
+    f.write(f"| **{ref_category_name}** |")
 
     for arn_attr_category, arn_attr_category_name in arn_attr_category_names.items():
         item_list = resource_categories_ref[ref_category][arn_attr_category]
